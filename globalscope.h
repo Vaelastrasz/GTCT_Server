@@ -24,15 +24,14 @@
 #define UI_MODEL ui->tv_mainTableView->model()
 #define UI_TABLE ui->tv_mainTableView
 
-struct CarRecord {
-    QString   carName;
-    QString   driver;
-    int       tankCapacity;
-    int       mileage;
-    QDate     date;
-    int       alreadyRun;
-    int       fueling;
-    int       fuelingNorm;
+struct DeviceRecord {
+    int       uniqueId;
+    QString   uniqueName;
+    QString   carNumber;
+    QString   logFileName;
+    QDateTime lastOpenDate;
+    QDateTime lastCloseDate;
+    bool      isNowOpen;
 };
 
 #endif // GLOBALSCOPE_H
