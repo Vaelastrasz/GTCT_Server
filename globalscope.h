@@ -30,6 +30,10 @@
 #define BLOCKSIZE 256
 #define SALTSIZE 8
 
+const QByteArray RSPTrue = "true";
+const QByteArray RSPFalse = "false";
+const QString _passphrase = "testword";
+
 struct DeviceRecord {
     int       uniqueId;
     QString   uniqueName;

@@ -3,6 +3,7 @@
 #include <QApplication>
 #include <QtCore>
 #include <QtHttpServer>
+#include "aesmanager.h"
 
 int main(int argc, char *argv[])
 {
@@ -16,7 +17,17 @@ int main(int argc, char *argv[])
     });
 
     httpServer.route("/commands/", [](QString encrypted) {
-        return QString("Data: %1").arg(encrypted);
+        AESManager manager;
+        QByteArray raw = manager.decryptAES(_passphrase.toLatin1(), encrypted.toLatin1());
+        QByteArray response;
+        int retcode = Parser::parseCmdAndCheck(raw);
+        if (retcode) {
+            Logger::parseToLog(raw);
+            response = RSPTrue;
+        } else {
+            response = RSPFalse;
+        }
+        return QString("%1").arg(response);
     });
 
     httpServer.listen(QHostAddress::Any, 4986);
