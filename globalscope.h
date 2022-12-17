@@ -25,6 +25,11 @@
 #define UI_TABLE ui->tv_mainTableView
 #define STYLE_PATH QString("D:\\Projects\\GTCT_Server\\Medize.qss")
 
+#define KEYSIZE 32
+#define IVSIZE 32
+#define BLOCKSIZE 256
+#define SALTSIZE 8
+
 struct DeviceRecord {
     int       uniqueId;
     QString   uniqueName;
