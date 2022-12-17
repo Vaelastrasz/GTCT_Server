@@ -5,7 +5,7 @@ DBManager::DBManager() : m_showRecCounter(0),
 
     if (QFile::exists(DBCurrentPath)) {
         m_db.setDatabaseName(DBCurrentPath);
-    } else
+    }
 
     if (!m_db.open()) {
         qDebug() << TEXT("Error: the connection to the database failed");
