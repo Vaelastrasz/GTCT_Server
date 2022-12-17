@@ -12,8 +12,13 @@ int main(int argc, char *argv[])
 
     QHttpServer httpServer;
     httpServer.route("/", []() {
-        return "true";
+        return "encrypted";
     });
+
+    httpServer.route("/commands/", [](QString encrypted) {
+        return QString("Data: %1").arg(encrypted);
+    });
+
     httpServer.listen(QHostAddress::Any, 4986);
     qDebug() << "Running on http://127.0.0.1:4986/ (Press CTRL+C to quit)";
 
