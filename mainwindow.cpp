@@ -22,6 +22,12 @@ void MainWindow::startup() {
 
     this->setWindowTitle(TEXT("GTCT v1.0"));
 
+    QFile style(STYLE_PATH);
+    style.open(QIODevice::ReadOnly);
+    QString styleSheet = QString(style.readAll());
+    style.close();
+    this->setStyleSheet(styleSheet);
+
     connect(m_insertRecWindow, &InsertRecord::insertNewRecord, m_dbHnd, &DBManager::addNewRecord);
     connect(m_insertRecWindow, &InsertRecord::insertNewRecord, this, &MainWindow::on_btn_refresh_clicked);
     connect(this, &MainWindow::getIDs, m_dbHnd, &DBManager::processDevicesIDRequest);

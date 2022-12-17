@@ -23,6 +23,7 @@
 #define DB_DEFAULT_PATH QString("D:\\Uni\\masterwork\\db\\GTCT_DB.db")
 #define UI_MODEL ui->tv_mainTableView->model()
 #define UI_TABLE ui->tv_mainTableView
+#define STYLE_PATH QString("D:\\Projects\\GTCT_Server\\Medize.qss")
 
 struct DeviceRecord {
     int       uniqueId;
