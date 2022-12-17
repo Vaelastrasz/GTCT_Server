@@ -34,6 +34,14 @@ const QByteArray RSPTrue = "true";
 const QByteArray RSPFalse = "false";
 const QString _passphrase = "testword";
 
+enum Protocol {
+    RegisterDevice = 0x01,
+    CheckDeviceID,
+    SendDeviceData,
+    OpenDeviceHatch,
+    CloseDeviceHatch
+};
+
 struct DeviceRecord {
     int       uniqueId;
     QString   uniqueName;

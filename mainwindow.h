@@ -3,6 +3,7 @@
 
 #include "dbmanager.h"
 #include "insertrecord.h"
+#include "logger.h"
 #include <QMainWindow>
 
 namespace Ui {
@@ -16,6 +17,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+    Logger* m_log = Logger::getInstance();
 
 signals:
     void getIDs();

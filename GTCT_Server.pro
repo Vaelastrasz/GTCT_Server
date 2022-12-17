@@ -17,6 +17,7 @@ SOURCES += \
     aesmanager.cpp \
     dbmanager.cpp \
     insertrecord.cpp \
+    logger.cpp \
     main.cpp \
     mainwindow.cpp \
     sqltablemodel.cpp
@@ -27,6 +28,7 @@ HEADERS += \
     dbmanager.h \
     globalscope.h \
     insertrecord.h \
+    logger.h \
     mainwindow.h \
     sqltablemodel.h
 

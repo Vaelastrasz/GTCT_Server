@@ -4,6 +4,7 @@
 #include <QtCore>
 #include <QtHttpServer>
 #include "aesmanager.h"
+#include "parser.h"
 
 int main(int argc, char *argv[])
 {
@@ -15,16 +16,17 @@ int main(int argc, char *argv[])
     httpServer.route("/", []() {
         return "encrypted";
     });
-
-    httpServer.route("/commands/", [](QString encrypted) {
+    Logger* uilog = w.m_log;
+    httpServer.route("/commands/", [uilog](QString encrypted) {
         AESManager manager;
         QByteArray raw = manager.decryptAES(_passphrase.toLatin1(), encrypted.toLatin1());
         QByteArray response;
         int retcode = Parser::parseCmdAndCheck(raw);
         if (retcode) {
-            Logger::parseToLog(raw);
+            uilog->addToFileLog(raw, llInformation);
             response = RSPTrue;
         } else {
+            uilog->addToFileLog(raw, llError);
             response = RSPFalse;
         }
         return QString("%1").arg(response);
